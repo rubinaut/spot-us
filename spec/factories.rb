@@ -96,6 +96,7 @@ Factory.define :pitch do |pitch|
   pitch.featured_image_caption "lorem ipsum"
   pitch.skills                 "lorem ipsum"
   pitch.keywords               "lorem ipsum"
+  pitch.expiration_date        Time.now + 1.year
   pitch.contract_agreement     "1"
   pitch.association(:network)
   pitch.association(:user)
