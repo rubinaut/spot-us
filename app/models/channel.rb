@@ -1,14 +1,14 @@
 class Channel < ActiveRecord::Base
   validates_presence_of   :title, :channel_image_file_name, :description
   validates_uniqueness_of :title
-  has_attached_file :channel_image,
+  has_attached_file :channel_image, APP_CONFIG[:paperclip].merge(
                     :styles => { :thumb => '44x44#', :medium => "200x150#" },
-                    :storage => :s3,
-                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :bucket =>   S3_BUCKET,
                     :default_url => "/images/default_avatar.png",
-                    :path        => "channels/:attachment/:id_partition/:basename_:style.:extension",
-                    :url         => "channels/:attachment/:id_partition/:basename_:style.:extension"
+                    :path        => "#{APP_CONFIG[:paperclip][:path_prefix]}" <<
+                                    "channels/:attachment/:id_partition/:basename_:style.:extension",
+                    :url         => "#{APP_CONFIG[:paperclip][:url_prefix]}" <<
+                                    "channels/:attachment/:id_partition/:basename_:style.:extension"
+                  ).except(:path_prefix, :url_prefix)
   
   named_scope :hilited, :conditions => "channels.status = 'hilited'"
   #named_scope :by_network, lambda {|network|

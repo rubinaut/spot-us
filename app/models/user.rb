@@ -131,17 +131,17 @@ class User < ActiveRecord::Base
   before_save :encrypt_password, :unless => lambda {|user| user.password.blank? }
   # after_create :register_user_to_fb
   
-  has_attached_file :photo,
+  has_attached_file :photo, APP_CONFIG[:paperclip].merge(
                     :styles      => { :thumb => '44x44#', :mini_thumb => '32x32#' },
-                    :storage => :s3,
-                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :bucket =>   S3_BUCKET,
-                    :path        => "profiles/" <<
+                    :path        => "#{APP_CONFIG[:paperclip][:path_prefix]}" <<
+                                    "profiles/" <<
                                     ":attachment/:id_partition/" <<
                                     ":basename_:style.:extension",
-                    :url         => "profiles/:attachment/:id_partition/" <<
+                    :url         => "#{APP_CONFIG[:paperclip][:url_prefix]}" <<
+                                    "profiles/:attachment/:id_partition/" <<
                                     ":basename_:style.:extension",
                     :default_url => "/images/default_avatar.png"
+                  ).except(:path_prefix, :url_prefix)
 
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.

@@ -10,21 +10,21 @@ class Post < ActiveRecord::Base
   
   after_save :touch_pitch
   
-  has_attached_file :blog_image,
+  has_attached_file :blog_image, APP_CONFIG[:paperclip].merge(
                       :styles => { :thumb => '50x50#', 
                           :medium => "200x150#", 
                           :front_story => "300x163#", 
                           :medium_alt=>"215x180#", 
                           :medium_alt_1=>"268x210#" },
-                      :storage => :s3,
-                      :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                      :bucket =>   S3_BUCKET,
-                      :path => "posts/" <<
+                      :path => "#{APP_CONFIG[:paperclip][:path_prefix]}" <<
+                               "posts/" <<
                                ":attachment/:id_partition/" <<
                                ":basename_:style.:extension",
-                      :url =>  "posts/:attachment/:id_partition/" <<
+                      :url =>  "#{APP_CONFIG[:paperclip][:url_prefix]}" <<
+                               "posts/:attachment/:id_partition/" <<
                                ":basename_:style.:extension",
                       :default_url => "/images/featured_images/missing_:style.png"
+                  ).except(:path_prefix, :url_prefix)
                       
   #if Rails.env.production?
     validates_attachment_content_type :blog_image,
