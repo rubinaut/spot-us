@@ -175,9 +175,11 @@ class NewsItem < ActiveRecord::Base
   def short_url(start_url=nil,base_url=nil)
     base_url  = "http://#{APP_CONFIG[:default_host]}/" unless base_url
     base_url += "#{type.to_s.downcase.pluralize}/"
+    long_url = "#{base_url}#{to_param}"
+    return long_url if Rails.env.development? and APP_CONFIG[:bitly][:login] == 'some_login'  # use long urls in dev mode if unconfigured
     authorize = UrlShortener::Authorize.new APP_CONFIG[:bitly][:login], APP_CONFIG[:bitly][:api_key]
     client = UrlShortener::Client.new(authorize)
-    shorten = client.shorten("#{base_url}#{to_param}")
+    shorten = client.shorten(long_url)
     shorten.urls
   end
   
