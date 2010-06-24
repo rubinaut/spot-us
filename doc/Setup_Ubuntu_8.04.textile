@@ -1,0 +1,172 @@
+h1. Setting up spot.us on a fresh install of Ubuntu Server 8.04 LTS (Hardy Heron)
+
+h2. Install packages (as root)
+
+bc. root@ubuntu:~# apt-get install git-core curl \
+  apache2-mpm-worker apache2-threaded-dev postfix mysql-server memcached \
+  imagemagick libsasl2-dev libxml2-dev libxslt1-dev libmysqlclient15-dev
+root@ubuntu:~# apt-get build-dep ruby1.8
+
+h2. Make sure memcached is running.
+
+When you install the memcached package, it doesn't start automatically for some reason.  Start it:
+
+bc. root@ubuntu:~# /etc/init.d/memcached restart
+
+h2. Install RVM
+
+Install the ["Ruby Version Manager":http://rvm.beginrescueend.com/]:
+
+bc. spotuser@ubuntu:~$ bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+
+Then edit ~/.bashrc and place the following line:
+
+bc. [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+before these lines:
+
+bc. # If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+
+h2. Install Ruby Enterprise Edition
+
+You can use any Ruby here, but for this example we're using REE.
+
+bc. spotuser@ubuntu:~$ rvm install ree
+spotuser@ubuntu:~$ rvm ree --default
+
+h2. Phusion Passenger
+
+h3. Install Passenger
+
+bc. spotuser@ubuntu:~$ echo "gem: --no-ri --no-rdoc" >> ~/.gemrc     # Speed up "gem install"
+spotuser@ubuntu:~$ rvm ree --passenger    # Set up the Passenger wrapper
+spotuser@ubuntu:~$ gem install passenger
+spotuser@ubuntu:~$ passenger-install-apache2-module
+
+h3. Configure Passenger for Apache (as root)
+
+Create /etc/apache2/mods-available/local-passenger.load to look something like this:
+
+bc. LoadModule passenger_module /home/spotuser/.rvm/gems/ree-1.8.7-2010.02/gems/passenger-2.2.15/ext/apache2/mod_passenger.so
+
+Create /etc/apache2/mods-available/local-passenger.conf to look something like this (note that PassengerRuby points to the wrapper):
+
+bc. PassengerRoot /home/spotuser/.rvm/gems/ree-1.8.7-2010.02/gems/passenger-2.2.15
+PassengerRuby /home/spotuser/.rvm/bin/passenger_ruby
+
+Note: If you want to avoid the local privilege escalation security hole this creates, copy mod_passenger.so somewhere else, chown it to root, and adjust the LoadModule line accordingly.
+
+Create /etc/apache2/sites-available/000-spotus-default to look something like this (note: we will clone the git repository to /home/spotuser/spot-us here):
+
+bc. <VirtualHost *:80>
+   ServerName spotus.local
+   DocumentRoot /home/spotuser/spot-us/public
+   <Directory /home/spotuser/spot-us/public>
+      AllowOverride all
+      Options -MultiViews
+   </Directory>
+</VirtualHost>
+<VirtualHost *:443>
+   ServerName spotus.local
+   DocumentRoot /home/spotuser/spot-us/public
+   <Directory /home/spotuser/spot-us/public>
+      AllowOverride all
+      Options -MultiViews
+   </Directory>
+  <IfModule mod_ssl.c>
+    SSLEngine On
+    # NOTE: This is just a dummy certificate; Generate a real SSL certificate for a real site.
+    SSLCertificateFile "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+    SSLCertificateKeyFile "/etc/ssl/private/ssl-cert-snakeoil.key"
+    #SSLCertificateChainFile "/etc/ssl/certs/ssl-cert-snakeoil.chcrt"
+  </IfModule>
+</VirtualHost>
+
+Run:
+
+bc. root@ubuntu:~# a2dissite 000-default    # Disable the default site
+root@ubuntu:~# a2ensite 000-spotus-default
+
+Load the module:
+
+bc. root@ubuntu:~# a2enmod local-passenger
+
+h3. Other Apache configuration
+
+bc. root@ubuntu:~# a2enmod rewrite    # Enable mod_rewrite
+root@ubuntu:~# a2enmod ssl    # Enable mod_ssl
+
+h3. Reload Apache configuration
+
+bc. root@ubuntu:~# /etc/init.d/apache2 restart
+
+
+h2. Install Rails
+
+Switch back to the non-root user and run:
+
+bc. spotuser@ubuntu:~$ gem install -v=2.3.2 rails
+
+h2. Clone the repository
+
+bc. spotuser@ubuntu:~$ cd ~ 
+spotuser@ubuntu:~$ git clone git://github.com/spot-us/spot-us
+spotuser@ubuntu:~$ cd ~/spot-us
+
+h2. Install gems needed by the application
+
+bc. spotuser@ubuntu:~/spot-us$ cp config/settings.example.yml config/settings.yml
+spotuser@ubuntu:~/spot-us$ cp config/database.example.yml config/database.yml
+spotuser@ubuntu:~/spot-us$ # Edit config/database.yml and add a "production" database.
+spotuser@ubuntu:~/spot-us$ rake gems:install RAILS_ENV=production
+
+h2. Edit config/settings.yml
+
+h3. action_mailer
+
+bc. :action_mailer:
+  :delivery_method: :sendmail
+
+h3. paperclip (for local development; use S3 for production)
+
+bc. :paperclip:
+  :storage: :filesystem
+  :path_prefix: "public/paperclip/"
+  :url_prefix: "/paperclip/"
+
+Then make the directory:
+
+bc. spotuser@ubuntu:~/spot-us$ mkdir public/paperclip
+spotuser@ubuntu:~/spot-us$ chmod 777 public/paperclip
+
+h3. default_host
+
+XXX - Is this correct?
+
+bc. :default_host: spotus.local
+
+h2. Initialize the database
+
+bc. spotuser@ubuntu:~/spot-us$ rake RAILS_ENV=production db:create
+spotuser@ubuntu:~/spot-us$ rake RAILS_ENV=production db:migrate
+spotuser@ubuntu:~/spot-us$ rake RAILS_ENV=production db:migrate   # run again if the above invocation fails
+spotuser@ubuntu:~/spot-us$ rake RAILS_ENV=production db:populate
+
+h2. Make spotus.local on your machine resolve to the server
+
+Edit /etc/hosts on your machine and do something like:
+
+bc. 192.168.x.x spotus.local
+
+h2. Create account
+
+* Connect to http://spotus.local/ and register a new account 
+* Run RAILS_ENV=./script/console and then do something like:
+
+bc. ree-1.8.7-2010.02 > u = User.find_by_email("youremail@example.com")
+ree-1.8.7-2010.02 > u.type = "Admin"
+ree-1.8.7-2010.02 > u.save!
+
+* Log in
