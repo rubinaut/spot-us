@@ -33,7 +33,11 @@ Rails::Initializer.run do |config|
   config.gem "money", :version => ">=2.1.3"
   config.gem "oauth2"
   config.gem "json"
-
+  config.gem "mysql"
+  config.gem "memcached"
+  config.gem "url_shortener"
+  config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "twitter"
 
   config.time_zone = 'UTC'
 
