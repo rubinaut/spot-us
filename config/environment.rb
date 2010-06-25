@@ -38,7 +38,7 @@ Rails::Initializer.run do |config|
   config.gem "memcached"
   config.gem "url_shortener"
   config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "twitter"
+  config.gem "twitter4r", :lib => 'twitter'
 
   config.time_zone = 'UTC'
 

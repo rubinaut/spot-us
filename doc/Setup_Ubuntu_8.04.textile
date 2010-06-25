@@ -4,7 +4,8 @@ h2. Install packages (as root)
 
 bc. root@ubuntu:~# apt-get install git-core curl \
   apache2-mpm-worker apache2-threaded-dev postfix mysql-server memcached \
-  imagemagick libsasl2-dev libxml2-dev libxslt1-dev libmysqlclient15-dev
+  imagemagick libsasl2-dev libxml2-dev libxslt1-dev libmysqlclient15-dev \
+  libreadline5-dev
 root@ubuntu:~# apt-get build-dep ruby1.8
 
 h2. Make sure memcached is running.
