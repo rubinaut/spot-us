@@ -10,7 +10,7 @@ class TipsController < ApplicationController
   def block_if_donated_to
     t = find_resource(params[:id])
     if t.pledged_to? && !t.editable_by?(current_user)
-      access_denied(:flash => "You cannot edit a tip that has pledges.  For minor changes, contact info@spot.us",
+      access_denied(:flash => "You cannot edit a tip that has pledges.  For minor changes, contact #{APP_CONFIG[:email_notifications][:info][:email]}",
                     :redirect => tip_url(t))
     end
   end

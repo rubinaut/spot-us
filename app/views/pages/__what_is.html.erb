@@ -32,7 +32,7 @@
   %p
     We are incredibly passionate and do our best to answer every email. Don't hesitate to contact
     us:
-    = mail_to "info@spot.us", nil, :encode => "hex"
+    = mail_to APP_CONFIG[:email_notifications][:info][:email], nil, :encode => "hex"
   %p
     Before you send us an email - check our FAQ's below. Perhaps your question has already been
     answered.
@@ -394,7 +394,7 @@
     realize that a waiting period before you become a "news organization" on Spot.Us is less than
     ideal, but it is important to us that these ethics are followed by anybody that could
     singlehandedly fund an investigation. Feel free to email
-    = mail_to "info@spot.us", nil, :encode => "hex"
+    = mail_to APP_CONFIG[:email_notifications][:info][:email], nil, :encode => "hex"
     if you have questions. We tend to approve accounts within 24 hours.    
 
   %a{:name => "work_with"}

@@ -32,7 +32,7 @@ class Mailer < ActionMailer::Base
   end
   
   def sponsor_interest_notification(user)
-    recipients '"David Cohn" <david@spot.us>'
+    recipients MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us - Someone has signed up to a Sponsor"
     body :user => user
@@ -46,7 +46,7 @@ class Mailer < ActionMailer::Base
   end
 
   def news_org_signup_request(user)
-    recipients '"David Cohn" <david@spot.us>'
+    recipients MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us: News Org Requesting to Join"
     body        :user => user
@@ -60,7 +60,7 @@ class Mailer < ActionMailer::Base
   end
 
   def pitch_created_notification(pitch)
-    recipients '"David Cohn" <david@spot.us>'
+    recipients MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us: A pitch needs approval!"
     body       :pitch => pitch
@@ -81,7 +81,7 @@ class Mailer < ActionMailer::Base
   end
 
   def pitch_accepted_notification(pitch,to,email,subscriber=nil)
-    #recipients '"David Cohn" <david@spot.us>'
+    #recipients MAIL_EDITOR
     #bcc pitch.supporters.map(&:email).concat(Admin.all.map(&:email)).concat(pitch.subscribers.map(&:email)).uniq.join(', ')
     recipients  email
     from       MAIL_FROM_INFO
@@ -90,7 +90,7 @@ class Mailer < ActionMailer::Base
   end
   
   def blog_posted_notification(post,to,email,subscriber=nil)
-    #recipients '"David Cohn" <david@spot.us>'
+    #recipients MAIL_EDITOR
     #bcc post.pitch.blog_subscribers.map(&:email).concat(Admin.all.map(&:email)).concat(post.pitch.subscribers.map(&:email)).uniq.join(', ')
     recipients  email
     from       MAIL_FROM_INFO
@@ -116,7 +116,7 @@ class Mailer < ActionMailer::Base
   
   def story_rejected_notification(story)
     recipients story.pitch.user.email
-    bcc        '"David Cohn" <david@spot.us>'
+    bcc        MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us Story Requires Further Edits: '#{story.headline}'"
     body       :story => story
@@ -133,7 +133,7 @@ class Mailer < ActionMailer::Base
   end
 
   def admin_reporting_team_notification(pitch)
-    recipients '"David Cohn" <david@spot.us>'
+    recipients MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us: Someone wants to join a pitch's reporting team!"
     body       :pitch => pitch
@@ -176,7 +176,7 @@ class Mailer < ActionMailer::Base
   
   def assignment_application_notification(mail)
     recipients [mail[:assignment].user.email,mail[:contributor].email].join(",")
-    bcc        '"David Cohn" <david@spot.us>'
+    bcc        MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us: Assignment assignment application: " + mail[:assignment].pitch.headline
     body       mail
@@ -197,7 +197,7 @@ class Mailer < ActionMailer::Base
   end
 
   def story_ready_notification(story)
-    recipients '"David Cohn" <david@spot.us>'
+    recipients MAIL_EDITOR
     from       MAIL_FROM_INFO
     subject    "Spot.Us: Story ready for publishing"
     body       :story => story

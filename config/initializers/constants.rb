@@ -7,8 +7,9 @@ LOCATIONS = [
   "South Bay"
 ].freeze
 
-MAIL_FROM_INFO = %("Spot.Us" <info@spot.us>)
-MAIL_WEBMASTER = %("Webmaster Spot.Us" <webmaster@spot.us>)
+MAIL_FROM_INFO = "\"#{APP_CONFIG[:email_notifications][:info][:name]}\" <#{APP_CONFIG[:email_notifications][:info][:email]}>"
+MAIL_WEBMASTER = "\"#{APP_CONFIG[:email_notifications][:webmaster][:name]}\" <#{APP_CONFIG[:email_notifications][:webmaster][:email]}>"
+MAIL_EDITOR = "\"#{APP_CONFIG[:email_notifications][:editor][:name]}\" <#{APP_CONFIG[:email_notifications][:editor][:email]}>"
 PREPEND_STATUS_UPDATE = "Spot.Us"
 
 MODEL_NAMES = {

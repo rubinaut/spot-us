@@ -59,7 +59,7 @@ class StoriesController < ApplicationController
       end
       unless story.editable_by?(current_user)
         access_denied( \
-          :flash => "You cannot edit this story, contact info@spot.us",
+          :flash => "You cannot edit this story, contact #{APP_CONFIG[:email_notifications][:info][:email]}",
           :redirect => story_url(story))
       end
     end

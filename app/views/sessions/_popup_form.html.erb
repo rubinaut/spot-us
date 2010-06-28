@@ -7,7 +7,7 @@
 	</ul>
 	<p>
 		If you're experiencing a persistent problem, email
-		<%= mail_to 'david@spot.us', nil, :encode => "hex"%>
+		<%= mail_to APP_CONFIG[:email_notifications][:editor][:email], nil, :encode => "hex"%>
 		<br/>
 		Seriously, this guy doesn't sleep and he wants the site to work for you!!!
 	</p>
