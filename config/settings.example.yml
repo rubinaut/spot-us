@@ -44,3 +44,13 @@ production:
       :bucket: <%= S3_BUCKET %>
       :path_prefix: ""
       :url_prefix: ""
+  :email_notifications:
+      :editor:
+        :email: "david@spot.us"
+        :name: "David Cohn"
+      :info:
+        :email: "info@spot.us"
+        :name: "Spot.Us"
+      :webmaster:
+        :email: "webmaster@spot.us"
+        :name: "Webmaster Spot.Us"

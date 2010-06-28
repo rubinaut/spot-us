@@ -23,6 +23,6 @@
      </ul>
      <p>
        Didn't see the topic you want to support? Let us know:
-       <%= mail_to "info@spot.us", nil, :encode => "hex" %>
+       <%= mail_to APP_CONFIG[:email_notifications][:info][:email], nil, :encode => "hex" %>
      </p>
 </div>

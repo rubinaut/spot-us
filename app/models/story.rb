@@ -147,7 +147,7 @@ class Story < NewsItem
             Mailer.deliver_story_to_editor_notification(self,fact_checker.full_name,fact_checker.email)
         end
     end
-    Mailer.deliver_story_to_editor_notification(self,"David","david@spot.us")
+    Mailer.deliver_story_to_editor_notification(self,APP_CONFIG[:email_notifications][:editor][:name],APP_CONFIG[:email_notifications][:editor][:email])
   end
   
   def notify_reporter
@@ -184,7 +184,7 @@ class Story < NewsItem
   
   protected
   def fact_checker_recipients
-      recipients = '"David Cohn" <david@spot.us>'
+      recipients = MAIL_EDITOR
       if self.pitch && self.pitch.fact_checker
           fact_checker = User.find_by_id(self.pitch.fact_checker.id)
           if fact_checker && fact_checker.email
