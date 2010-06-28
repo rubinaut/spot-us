@@ -20,7 +20,7 @@
 			<br/>
 			<hr>
 			<h5>I'd like, or know somebody who would like, to sponsor a survey like this one.</h5>
-			<input name="sponsor_interest" value="yes" type="checkbox" /> Spot.Us will email you with details
+      <input name="sponsor_interest" value="yes" type="checkbox" /> <%=h SITE_NAME%> will email you with details
 			<% unless params[:pitch_id].blank? %>
 				<input type="hidden" name="pitch_id" value="<%= params[:pitch_id]  %>">
 			<% end %>

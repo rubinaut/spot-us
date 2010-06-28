@@ -6,7 +6,7 @@
 	<% end %>
 	<% form_for(:user, @user, :url => user_path, :html => {:class => 'register'}) do |f| %>
 		<div id="register">
-			<h3>Register for Spot.Us</h3>
+			<h3>Register for <%=h SITE_NAME%></h3>
 			<div class="row">
 				<%= f.label :first_name, "Your First Name" %>
 				<%= f.text_field :first_name, :class => "text_lite", :tabindex => 1 %>
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 	<% end %>
-	<a href="<%="#{pitch_path(@pitch).gsub('pitches','lite')}"%>/login" title="Login ot Spot.Us">Do you want to login instead?</a>
+	<a href="<%="#{pitch_path(@pitch).gsub('pitches','lite')}"%>/login" title="Login ot <%=h SITE_NAME%>">Do you want to login instead?</a>
 	<br/><br/>
 </div>
 

@@ -2,7 +2,7 @@
 	<%= auto_discovery_link_tag(:rss, {:controller => 'users', :action => 'list', :format => 'rss', :filter=>@filter}) %>
 <% end %>
 
-<% @title = "Spot.us - Fund A Story" %>
+<% @title = "#{h(SITE_NAME)} - Fund A Story" %>
 
 <div id="fund_a_story">
 	<div id="navigation">
@@ -15,7 +15,7 @@
 	<div id="stories">
 		<%= link_to image_tag("/images/new_design/rss_16.png"), "/donors.rss", :class => "rss_button" %>
 		<h3 class="display_inline">NOW VIEWING:</h3> 
-		<h4 class="display_inline">Spot.Us <%= @filter.gsub("_", " ").gsub("-", " ").titleize %> <%=get_inside_network_text(@network).titleize%></h4>
+		<h4 class="display_inline"><%=h SITE_NAME%> <%= @filter.gsub("_", " ").gsub("-", " ").titleize %> <%=get_inside_network_text(@network).titleize%></h4>
 		<div style="height: 5px; background-color: rgb(204, 204, 204); margin-bottom: 10px;">
 			&nbsp;
 		</div>

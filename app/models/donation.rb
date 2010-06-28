@@ -131,7 +131,7 @@ class Donation < ActiveRecord::Base
       if user.notify_facebook_wall
         description = strip_html(pitch.short_description)
         description = "#{description[0..200]}..." if description.length>200
-        user.save_async_post("Spot.Us Donation: I have just donated to this pitch.", description, pitch.short_url, pitch.featured_image.url, pitch.headline) if user
+        user.save_async_post("#{SITE_NAME} Donation: I have just donated to this pitch.", description, pitch.short_url, pitch.featured_image.url, pitch.headline) if user
       end
     #end
   end

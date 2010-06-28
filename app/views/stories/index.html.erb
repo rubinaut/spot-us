@@ -2,12 +2,12 @@
 	<%= auto_discovery_link_tag(:rss, {:controller => 'news_items', :action => 'index', :format => 'rss'}) %>
 <% end %>
 
-<% @title = "Spot.us - Fund A Story" %>
+<% @title = "#{h(SITE_NAME)} - Fund A Story" %>
 <% @channels = [] %>
 <% @filter = nil %>
 <div id="fund_a_story">
 	<div id="navigation">
-		<h5>Browse Spot.Us</h5>
+		<h5>Browse <%=h SITE_NAME%></h5>
 		<%if @filter%>
 		   	<ul id="filters" class="filter">			
 				<li<%=check_active(@filter,"newest_stories") %>><div><a href="/news_items/search?news_item_type=pitches&amp;sort_by=desc">Newest Stories</a></div></li>
@@ -52,7 +52,7 @@
 
 
 
-<% @title = "Spot.us - Read A Story" %>
+<% @title = "#{h(SITE_NAME)} - Read A Story" %>
 <div id="read_stories">
    
 </div>

@@ -1,15 +1,15 @@
 Dear <%=@to%>,
 
-A project you've supported on Spot.Us has been published! 
+A project you've supported on <%= SITE_NAME %> has been published! 
 
 <%= @story.headline %>
 Check out the story: <%= story_url(@story) %>
 
 Thank you so much for your support of community funded journalism.
 
-If you have questions or concerns - please contact: David@spot.us
+If you have questions or concerns - please contact: <%= APP_CONFIG[:email_notifications][:editor][:email] %>
 
 Sincerely,
-Spot.Us Team
+The <%= SITE_NAME %> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@email, :subscriber=>@subscriber }%>

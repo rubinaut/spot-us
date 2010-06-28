@@ -1,4 +1,4 @@
-<% @title = "Spot.us - Fund Your Donations" %>
+<% @title = "#{h(SITE_NAME)} - Fund Your Donations" %>
 
 <% content_for :head do %>
 	<% javascript_tag do %>
@@ -77,7 +77,7 @@
          <ul>
             <li id="support_spotus" class="donation clearfix">
                <div class="donation_extra">
-                  <h3>Support Spot.Us</h3>
+                  <h3>Support <%=h SITE_NAME%></h3>
                </div>
                <div class="donater">
                   $ <%= text_field_tag "spotus_donation_amount", number_to_currency(spotus_donation.amount, :unit => ''), :size => 5, :id => "spotus_donation", :style => "text-align:right;" %>

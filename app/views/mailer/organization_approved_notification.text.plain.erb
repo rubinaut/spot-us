@@ -1,17 +1,17 @@
 Dear <%=@user.first_name%>,
 
-Welcome to Spot.Us and thanks for joining our effort to produce
+Welcome to <%= SITE_NAME%> and thanks for joining our effort to produce
 community funded investigative journalism.
 
 We apologize for the slight delay in approving your account. News
 Organizations are the ONLY type of account that we grant special
 privileges to and as a result we are very careful about who is given a
-"news organization" account on Spot.Us
+"news organization" account on <%= SITE_NAME%>.
 
 But now that you are in - we work for you!
 
-If you have any questions - don't hesitate to contact David Cohn:
-David@spot.us
+If you have any questions - don't hesitate to contact <%=APP_CONFIG[:email_notifications][:editor][:name]%>:
+<%=APP_CONFIG[:email_notifications][:editor][:email]%>
 
 In the meantime - here are some ideas on how to get started.
 
@@ -23,7 +23,6 @@ a reality. Check out our browse feature here: http://spot.us/news_items
 You can get more ideas at our FAQ: http://spot.us/pages/about#faq_news_organization
 
 Sincerely,
-David Cohn
-Spot.Us
+The <%= SITE_NAME %> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@user.email }%>

@@ -7,7 +7,7 @@ Dear <%=@assignment.pitch.user.first_name%>,
 See the assignment at:
 <%= pitch_assignment_url(@assignment.pitch, @assignment) %>
 
-Who becomes part of your reporting team is up to your discretion (note: Spot.Us will
+Who becomes part of your reporting team is up to your discretion (note: <%= SITE_NAME%> will
 occasionally assign somebody as the Peer Review Editor). 
 
 Visit your pitch and click into the specific assignment in question. 
@@ -19,6 +19,6 @@ they can turn in their reporting.
   If you want to be introduced to them, email <%=APP_CONFIG[:email_notifications][:info][:email]%>.
 
 Sincerely,
-Spot.Us
+The <%= SITE_NAME%> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>"#{@assignment.pitch.user.email} and #{@contributor.email}" }%>
