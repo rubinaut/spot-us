@@ -1,0 +1,27 @@
+.partners {
+  display: none;
+}
+
+#footer div#footer-copyright, #footer div#footer-notes, #user-header {
+  background-color: #75BAB8;
+}
+
+#footer a, #user-header ul.user-header-nav, #user-header, #footer-notes h3, #footer-notes h4, #footer div#footer-copyright, #footer div#footer-notes {
+  color: #333;
+}
+
+#footer .fund {
+  color: green;
+}
+
+.slogan .pink {
+  color:#BF0017;
+}
+
+.slogan .moss-green {
+  color: #3B6741;
+}
+
+div#footer-copyright ul{
+  text-align:center;
+}

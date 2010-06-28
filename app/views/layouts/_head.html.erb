@@ -25,6 +25,7 @@
   	<%= stylesheet_link_tag 'print', :media => "print"%>
 
 	<%= stylesheet_link_tag 'facebox', :media => "screen"%>
+	<%= stylesheet_link_tag APP_CONFIG[:customization][:css_file], :media => "screen" unless APP_CONFIG[:customization][:css_file].blank?%>
 	
 	<%= javascript_include_tag 'jquery-1.4.1.min'%>
   	<script type='text/javascript'>
