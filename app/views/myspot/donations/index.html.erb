@@ -1,4 +1,4 @@
-<% @title = "Spot.us - Member Dashboard" %>
+<% @title = "#{h(SITE_NAME)} - Member Dashboard" %>
 <%= render :partial => "layouts/common_questions" %>
 <div id="myspot_dashboard">
    <h3>My Spot</h3>
@@ -53,7 +53,7 @@
               <tr>
                 <td class="pitch">
                   <%= image_tag('support_spotus.png')%>
-                  Support Spot.Us
+                  Support <%=h SITE_NAME%>
                 </td>
                 <td class="donated"><%= current_user.last_paid_spotus_donation.created_at.to_s(:date) %></td>
                 <td class="donation"><%= number_to_currency(current_user.paid_spotus_donations_sum) %></td>

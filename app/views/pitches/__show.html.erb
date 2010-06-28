@@ -17,7 +17,7 @@
 		});	
 	</script>
 <% end %>
-<% @title = "Spot.us - Pitch: #{h @pitch.headline}" %>
+<% @title = "#{h(SITE_NAME)} - Pitch: #{h @pitch.headline}" %>
 
 <% if @subscriber && @subscriber.errors.any? %>
 	<div class="error">

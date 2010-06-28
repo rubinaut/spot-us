@@ -1,13 +1,13 @@
 Dear <%=@story.user.first_name%>,
 
-Your peer reviewer is suggesting further edits on your story on Spot.Us.
+Your peer reviewer is suggesting further edits on your story on <%= SITE_NAME%>.
 
 <%= @story.headline %>
 Find the story at: <%= story_url(@story) %>
 
-If you have questions or concerns - please contact: David@spot.us
+If you have questions or concerns - please contact: <%=APP_CONFIG[:email_notifications][:editor][:email]%>
 
 Sincerely,
-Spot.Us Team
+The <%= SITE_NAME %> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@story.user.email }

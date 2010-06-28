@@ -213,7 +213,7 @@ class NewsItem < ActiveRecord::Base
       description = strip_html(self.extended_description) if self.extended_description && description.blank?
       description = "#{description[0..200]}..." if description.length>200
       [self.user, User.info_account?].compact.uniq.each do |u|
-        u.save_async_post("Spot.Us #{type.to_s.titleize}", description, self.short_url, self.featured_image.url, self.headline) if u && u.facebook_user?
+        u.save_async_post("#{SITE_NAME} #{type.to_s.titleize}", description, self.short_url, self.featured_image.url, self.headline) if u && u.facebook_user?
       end
     end
     #end

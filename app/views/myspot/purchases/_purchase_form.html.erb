@@ -32,7 +32,7 @@
 	                  <%= hidden_field_tag "amount_#{i}", amount %>
 	                  <% i += 1 %>
 	                  <%= hidden_field_tag "item_number_#{i}", "#{@purchase.spotus_donation.id}" %>
-	                  <%= hidden_field_tag "item_name_#{i}", "Support Spot.Us" %>
+                    <%= hidden_field_tag "item_name_#{i}", "Support #{SITE_NAME}" %>
 	                  <%= hidden_field_tag "amount_#{i}", @purchase.spotus_donation[:amount] %>
 
 	               <% end %>

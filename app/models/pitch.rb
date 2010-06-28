@@ -362,7 +362,7 @@ class Pitch < NewsItem
     Assignment.create(:pitch_id => self.id, :user_id => self.user.id, :title =>"Apply to be Peer Review Editor", :is_factchecker_assignment => true,
                       :body => ["The Peer-Review editor has three main responsibilities – to ensure fair and accurate reporting, ",
                       "to be a second pair of eyes before a story is published and to be a sounding board as the reporter develops a story.",
-                      " At any time the Peer-Review editor can also report suspicious activities to Spot.Us."].join(""))
+                      " At any time the Peer-Review editor can also report suspicious activities to #{SITE_NAME}."].join(""))
   end
 
   def send_fund_notification

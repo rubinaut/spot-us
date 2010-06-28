@@ -1,12 +1,12 @@
 Dear <%=@user.first_name%>,
 
-Welcome to Spot.Us and thanks for joining our effort to produce
+Welcome to <%= SITE_NAME %> and thanks for joining our effort to produce
 community funded investigative journalism.
 
 Click here to activate your account:
 <%= activate_url(@user.activation_code) %>
 
-Spot.Us is yours to shape (including your profile: http://spot.us/myspot/profile)
+<%= SITE_NAME %> is yours to shape (including your profile: http://spot.us/myspot/profile)
 
 Our goal is to make sure that reporters cover the issues that are
 important to you. The best way to make this happen is to....
@@ -17,13 +17,12 @@ important to you. The best way to make this happen is to....
 would be of interest to you. Your tax-deductable donation could turn it into a reality.
 Check out our action items here: http://spot.us/news_items
 
-If you have any questions – don’t hesitate to contact Spot.Us: <%=APP_CONFIG[:email_notifications][:info][:email]%>
+If you have any questions – don’t hesitate to contact <%=SITE_NAME%>: <%=APP_CONFIG[:email_notifications][:info][:email]%>
 
 We are very hands on and passionate about making sure that the
 information needs of our communities are met. We work for you!!!!
 
 Sincerely,
-David Cohn
-Spot.Us
+The <%= SITE_NAME %> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@user.email }%>
