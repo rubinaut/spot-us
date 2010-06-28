@@ -113,7 +113,7 @@
 							<li>You now need to modify the pasted code. You need to change <em>'http://www.domain.com/path'</em> to the root path of your server. Example: If you can access the helper.html file at http://www.domain.com/path/helper.html, then you add http://www.domain.com/path there.</li>					
 						</ol>
 						<p>You can of course change the width of the iframe to fit your template. Note: As Spot.Us Lite is an interactive widget, we recommend that you do not use widths below 300px.</p>
-						<p>If you have any issues with the widget, please contact <a href='mailto:info@spot.us' title='info@spot.us'>info@spot.us</a></p>
+						<p>If you have any issues with the widget, please contact <a href="mailto:<%=h APP_CONFIG[:email_notifications][:info][:email]%>" title="<%=h APP_CONFIG[:email_notifications][:info][:email]%>"><%=h APP_CONFIG[:email_notifications][:info][:email]%></a></p>
 					</div>
 				</div>
 			</div>

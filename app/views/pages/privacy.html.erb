@@ -128,7 +128,7 @@
   <p>
     If you believe that Spot.Us has not adhered to the Privacy Statement, please contact Spot.Us by
     e-mail at 
-    <%= mail_to "info@spot.us", nil, :encode => "hex" %>
+    <%= mail_to APP_CONFIG[:email_notifications][:info][:email], nil, :encode => "hex" %>
     (please include the subject: Privacy Violation). We will do our best to
     address your concerns. If you feel that your complaint has been addressed incompletely, we
     invite you to let us know for further investigation.
