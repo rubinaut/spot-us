@@ -1,13 +1,13 @@
 Dear <%=@to%>,
 
-A story you're a peer reviewer for on Spot.Us has been sent to you for review.
+A story you're a peer reviewer for on <%= SITE_NAME%> has been sent to you for review.
 
 <%= @story.headline %>
 Check out the story at: <%= story_url(@story) %>
 
-If you have questions or concerns - please contact: David@spot.us
+If you have questions or concerns - please contact: <%=APP_CONFIG[:email_notifications][:info][:email]%>
 
 Sincerely,
-Spot.Us Team
+The <%= SITE_NAME%> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@email }%>

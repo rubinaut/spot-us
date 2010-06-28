@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   
   map_resource :profile, :singleton => true, :class => "User", :find => :current_user
   
-  META_DESCRIPTION = "Spot.Us enables the public to commission journalists to do investigations on important and perhaps overlooked stories. " + 
+  META_DESCRIPTION = "#{SITE_NAME} enables the public to commission journalists to do investigations on important and perhaps overlooked stories. " + 
                   "We are an open source project, to pioneer \"community funded reporting.\""
   META_KEYWORDS = "journalism, reporting, community, local, news, open source, media, donation, creative commons"
   
@@ -112,7 +112,7 @@ class ApplicationController < ActionController::Base
   end
   
   def html_meta_tags(meta_description = META_DESCRIPTION, meta_keywords = META_KEYWORDS)
-     @meta_description = "Spot.Us Community Report: " + strip_html(meta_description)[0..180] if meta_description and !meta_description.blank?
+     @meta_description = "#{SITE_NAME} Community Report: " + strip_html(meta_description)[0..180] if meta_description and !meta_description.blank?
      @meta_keywords = META_KEYWORDS + ", " + meta_keywords if meta_keywords and !meta_keywords.blank?   
   end
   

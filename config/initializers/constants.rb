@@ -10,7 +10,8 @@ LOCATIONS = [
 MAIL_FROM_INFO = "\"#{APP_CONFIG[:email_notifications][:info][:name]}\" <#{APP_CONFIG[:email_notifications][:info][:email]}>"
 MAIL_WEBMASTER = "\"#{APP_CONFIG[:email_notifications][:webmaster][:name]}\" <#{APP_CONFIG[:email_notifications][:webmaster][:email]}>"
 MAIL_EDITOR = "\"#{APP_CONFIG[:email_notifications][:editor][:name]}\" <#{APP_CONFIG[:email_notifications][:editor][:email]}>"
-PREPEND_STATUS_UPDATE = "Spot.Us"
+SITE_NAME = APP_CONFIG[:customization][:site_name]
+PREPEND_STATUS_UPDATE = SITE_NAME
 
 MODEL_NAMES = {
   'suggested' => 'Tip',

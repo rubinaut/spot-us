@@ -1,6 +1,6 @@
 <% content_for :head do %>
 <% end %>
-<% @title = "Spot.us - Community Centered Advertising" %>
+<% @title = "#{h(SITE_NAME)} - Community Centered Advertising" %>
 
 <% if @cca.errors.any? %>
 	<div class="error">
@@ -12,7 +12,7 @@
 	<% if @cca %>
 		<% apply_fragment ['cca_', @cca] do %>
 			<div id="survey_header">
-				<%= link_to "About Spot.Us Questionnaires", "#", :class=>"float-right", :id => "help_about-questionnaires" %>
+        <%= link_to "About #{h(SITE_NAME)} Questionnaires", "#", :class=>"float-right", :id => "help_about-questionnaires" %>
 				<h2>Earn <%= number_to_currency(@cca.award_amount) %> in pitch credits by filling out this questionnaire!</h2>
 			</div>
 			<div id="survey_wrapper">
@@ -41,7 +41,7 @@
 		</div>
 	<% else %>
 		<div id="survey_header">
-			<h3 class="headline">Spot.Us Sponsorship</h3>
+			<h3 class="headline"><%=h SITE_NAME%> Sponsorship</h3>
 		</div>
     We do not have any active sponsorship surveys. Are you interested in making one? Please contact <a href="mailto:<%=h APP_CONFIG[:email_notifications][:info][:email]%>"><%=h APP_CONFIG[:email_notifications][:info][:email]%></a> and
 		we will tell you how you can get one live here.

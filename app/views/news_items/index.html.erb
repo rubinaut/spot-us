@@ -2,7 +2,7 @@
 	<%= auto_discovery_link_tag(:rss, {:controller => 'news_items', :action => 'index', :format => 'rss', :filter=>@filter}) %>
 <% end %>
 
-<% @title = "Spot.us - Fund A Story" %>
+<% @title = "#{h(SITE_NAME)} - Fund A Story" %>
 
 <div id="fund_a_story">
 	<div id="navigation">

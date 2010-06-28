@@ -25,3 +25,11 @@
 div#footer-copyright ul{
   text-align:center;
 }
+
+#header div.howtouse{
+  width:160px;
+}
+
+#header ul#main-nav {
+  width: 538px;
+}

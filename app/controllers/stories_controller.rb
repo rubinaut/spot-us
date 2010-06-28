@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
   def accept
     story = find_resource
     story.accept!
-    flash[:notice] = "Your story has been submitted to spot.us personnel to be published"
+    flash[:notice] = "Your story has been submitted to #{SITE_NAME} personnel to be published"
     redirect_back_or_default("/")
   end
 

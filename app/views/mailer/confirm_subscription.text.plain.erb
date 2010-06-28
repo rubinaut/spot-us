@@ -1,6 +1,6 @@
 Dear subscriber,
 
-Please click the link below to complete your subscription to receive email updates to the Spot.Us story:
+Please click the link below to complete your subscription to receive email updates to the <%= SITE_NAME%> story:
 
 "<%= @subscriber.pitch.headline %>"
 
@@ -14,10 +14,9 @@ Subscription cancelation link:
 
 <%= root_url + "subscription/cancel/" + @subscriber.invite_token %>
 
-Thanks for your interest in Spot.Us.
+Thanks for your interest in <%= SITE_NAME%>.
 
 Sincerely,
-David Cohn
-Spot.Us
+The <%= SITE_NAME%> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@subscriber.email }%>

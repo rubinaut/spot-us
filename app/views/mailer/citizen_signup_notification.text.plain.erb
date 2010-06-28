@@ -1,11 +1,11 @@
 Dear <%=@user.first_name%>,
 
-Welcome to Spot.Us and thanks for joining our effort to produce
+Welcome to <%= SITE_NAME%> and thanks for joining our effort to produce
 community funded investigative journalism.
 
 You can login here: http://spot.us/session/new
 
-Spot.Us is yours to shape (including your profile: http://spot.us/myspot/profile)
+<%= SITE_NAME%> is yours to shape (including your profile: http://spot.us/myspot/profile)
 
 Our goal is to make sure that reporters cover the issues that are
 important to you. The best way to make this happen is to....
@@ -26,7 +26,6 @@ We are very hands on and passionate about making sure that the
 information needs of our communities are met. We work for you!!!!
 
 Sincerely,
-David Cohn
-Spot.Us
+The <%= SITE_NAME %> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@user.email }%>

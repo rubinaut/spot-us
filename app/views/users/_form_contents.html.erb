@@ -3,7 +3,7 @@
     <%= error_messages_for :user %>
   </div>
 <% end %>
-<h3>Register for Spot.Us</h3>
+<h3>Register for <%=h SITE_NAME%></h3>
 <% form_for(:user, @user, :url => user_path, :html => {:class => 'register'}) do |f| %>
     <div class="row">
       <%= f.label :first_name, "Your First Name" %>

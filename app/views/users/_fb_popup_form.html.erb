@@ -2,7 +2,7 @@
 	<div id="fb_profile">
 		<div class="update_header clearfix">
 			<%= image_tag("/images/new_design/facebook.png") %> 
-			<h4>Welcome to Spot.Us from Facebook.</h4>
+			<h4>Welcome to <%=h SITE_NAME%> from Facebook.</h4>
 		</div>
 		<label>To finish registration:</label><br/>
 
@@ -13,7 +13,7 @@
 		<% end %>
 		<ul>
 			<li>Fill out your name and email in the form below.</li>
-			<li>Or <a href="" class="login_link">Login</a> and connect to an existing Spot.Us Account.</li>
+			<li>Or <a href="" class="login_link">Login</a> and connect to an existing <%=h SITE_NAME%> Account.</li>
 		</ul>
 		
 		<% form_for :profile, :url => myspot_profile_path, :html => { :method => :put } do |f| %>
@@ -53,7 +53,7 @@
 	<div id="spotus_login" class="hide">
 		<div class="update_header clearfix">
 			<%= image_tag("/images/new_design/facebook.png") %>
-			<h4>Connect your Facebook login to an existing Spot.Us Account</h4>
+			<h4>Connect your Facebook login to an existing <%=h SITE_NAME%> Account</h4>
 		</div>
 	    <% if @profile && @profile.errors.any? %>
 			<div class="error">
@@ -61,7 +61,7 @@
 			</div>
 		<% end %>
 	    <ul>
-			<li>Login with your Spot.Us credentials below to Facebook connect.</li>
+			<li>Login with your <%=h SITE_NAME%> credentials below to Facebook connect.</li>
 			<li>or  <a href="" class="profile_link">&laquo; go back</a></li>
 		</ul>
 		<% form_tag session_url(:protocol => 'http') do %>

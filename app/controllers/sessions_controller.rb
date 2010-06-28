@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     		else
     			@user = User.from_identity(user)
     			self.current_user = @user
-    			flash[:notice] = "Welcome to Spot.Us."
+    			flash[:notice] = "Welcome to #{SITE_NAME}."
     		end
         create_current_login_cookie
         update_balance_cookie

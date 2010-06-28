@@ -1,6 +1,6 @@
 Dear <%=@to%>,
 
-The pitch on Spot.Us is a success!!!!!!  Congrats!!!!
+The pitch on <%= SITE_NAME%> is a success!!!!!!  Congrats!!!!
 
 <%= @pitch.headline %>
 <%= pitch_url(@pitch) %>
@@ -21,6 +21,6 @@ recouping you some of your original donation.
 If you have any questions - don't hesitate to contact us:  <%=APP_CONFIG[:email_notifications][:info][:email]%>
 
 Sincerely,
-David Cohn
+The <%= SITE_NAME%> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@email, :subscriber=>@subscriber }%>

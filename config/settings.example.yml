@@ -55,4 +55,5 @@ production:
         :email: "webmaster@spot.us"
         :name: "Webmaster Spot.Us"
   :customization:
-    :css_file:
+    :css_file: 
+    :site_name: "Spot.Us"

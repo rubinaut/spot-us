@@ -1,6 +1,6 @@
 Dear <%=@user.first_name%>,
 
-Welcome to Spot.Us and thanks for joining our effort to produce
+Welcome to <%= SITE_NAME%> and thanks for joining our effort to produce
 community powered reporting.
 
 You can login here: http://spot.us/session/new
@@ -8,7 +8,7 @@ You can login here: http://spot.us/session/new
 In the meantime, here are some ideas on how to get started:
 
 1. Start a pitch:  Traditionally you would pitch editors, because they
-were the only people that had a freelance budget.  At Spot.Us community
+were the only people that had a freelance budget.  At <%= SITE_NAME %> community
 members band together to build a budget of their own.  Now you can pitch
 the public to do the journalism you want! 
 
@@ -22,7 +22,6 @@ information needs of our communities are met.  We work for you!!!!
 Don’t hesitate to contact us:  <%=APP_CONFIG[:email_notifications][:info][:email]%>
 
 Sincerely,
-David Cohn
-Spot.Us
+The <%= SITE_NAME %> Team
 
 <%= render :partial=>"footer", :locals=>{ :email=>@user.email }%>
