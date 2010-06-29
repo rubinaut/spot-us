@@ -6,7 +6,7 @@ community funded investigative journalism.
 Click here to activate your account:
 <%= activate_url(@user.activation_code) %>
 
-<%= SITE_NAME %> is yours to shape (including your profile: http://spot.us/myspot/profile)
+<%= SITE_NAME %> is yours to shape (including your profile: <%=myspot_profile_url%>)
 
 Our goal is to make sure that reporters cover the issues that are
 important to you. The best way to make this happen is to....
@@ -15,7 +15,7 @@ important to you. The best way to make this happen is to....
 
 2. Fund a pitch: Perhaps our reporters have already created a pitch that
 would be of interest to you. Your tax-deductable donation could turn it into a reality.
-Check out our action items here: http://spot.us/news_items
+Check out our action items here: <%=news_items_url%>
 
 If you have any questions – don’t hesitate to contact <%=SITE_NAME%>: <%=APP_CONFIG[:email_notifications][:info][:email]%>
 
