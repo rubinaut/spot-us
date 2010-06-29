@@ -3,7 +3,7 @@ Dear <%=@user.first_name%>,
 Welcome to <%= SITE_NAME%> and thanks for joining our effort to produce
 community powered reporting.
 
-You can login here: http://spot.us/session/new
+You can login here: <%= new_session_url %>
 
 In the meantime, here are some ideas on how to get started:
 
@@ -14,7 +14,7 @@ the public to do the journalism you want!
 
 Here are answers to some FAQ's
 
-http://spot.us/pages/about#faq_reporter
+<%= page_url(:id=>"about", :anchor=>"faq_reporter")%>
 
 We are very hands on and passionate about making sure that the
 information needs of our communities are met.  We work for you!!!!
