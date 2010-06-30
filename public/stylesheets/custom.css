@@ -3,11 +3,15 @@
 }
 
 #footer div#footer-copyright, #footer div#footer-notes, #user-header {
-  background-color: #75BAB8;
+  background-color: #6DB2B0;
 }
 
 #footer a, #user-header ul.user-header-nav, #user-header, #footer-notes h3, #footer-notes h4, #footer div#footer-copyright, #footer div#footer-notes {
   color: #333;
+}
+
+#footer a:hover {
+  text-decoration:underline;
 }
 
 #footer .fund {
@@ -31,5 +35,31 @@ div#footer-copyright ul{
 }
 
 #header ul#main-nav {
-  width: 538px;
+  margin-left:30px;
+  width: 475px;
+}
+
+#header .logo {
+  background: transparent url(/images/gojo/logo.png) no-repeat scroll 0 0;
+  height:137px;
+  width: 366px;
+  margin-top:20px;
+}
+
+#header .logo p {
+  margin:0px;
+  height:100%;
+}
+
+#header .logo .logo-link {
+  height:100%;
+  width:100%;
+}
+
+#header {
+  background: #6DB2B0 url(/images/gojo/header-fill.png) repeat-x scroll 0px 20px;
+}
+
+#networks-nav {
+  background-color: #439A96;
 }
