@@ -57,3 +57,7 @@ production:
   :customization:
     :css_file: 
     :site_name: "Spot.Us"
+    :facebook_url: "http://www.facebook.com/pages/SpotUs/74947774190"
+    :twitter_url: "http://twitter.com/spotus"
+    :flickr_url: "http://www.flickr.com/photos/29792566@N08/"
+    :blog_url: "http://blog.spot.us"
