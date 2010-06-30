@@ -10,8 +10,14 @@ LOCATIONS = [
 MAIL_FROM_INFO = "\"#{APP_CONFIG[:email_notifications][:info][:name]}\" <#{APP_CONFIG[:email_notifications][:info][:email]}>"
 MAIL_WEBMASTER = "\"#{APP_CONFIG[:email_notifications][:webmaster][:name]}\" <#{APP_CONFIG[:email_notifications][:webmaster][:email]}>"
 MAIL_EDITOR = "\"#{APP_CONFIG[:email_notifications][:editor][:name]}\" <#{APP_CONFIG[:email_notifications][:editor][:email]}>"
+
 SITE_NAME = APP_CONFIG[:customization][:site_name]
 PREPEND_STATUS_UPDATE = SITE_NAME
+
+FACEBOOK_URL = APP_CONFIG[:customization][:facebook_url]
+TWITTER_URL = APP_CONFIG[:customization][:twitter_url]
+FLICKR_URL = APP_CONFIG[:customization][:flickr_url]
+BLOG_URL = APP_CONFIG[:customization][:blog_url]
 
 MODEL_NAMES = {
   'suggested' => 'Tip',
