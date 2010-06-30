@@ -3,7 +3,7 @@
 }
 
 #user-header {
-  background-color: #6DB2B0;
+  background-color: #55aaa7;
 }
 
 #footer a, #user-header ul.user-header-nav, #user-header, #footer-notes h3, #footer-notes h4, #footer div#footer-copyright, #footer div#footer-notes {
@@ -28,7 +28,7 @@
 }
 
 .slogan .moss-green {
-  color: #3B6741;
+  color: #fff;
 }
 
 div#footer-copyright ul{
@@ -38,13 +38,14 @@ div#footer-copyright ul{
 #header ul#main-nav {
   margin-left:30px;
   width: 415px;
+  margin-right:50px;
 }
 
 #header .logo {
   background: transparent url(/images/gojo/logo.png) no-repeat scroll 0 0;
   height:137px;
   width: 366px;
-  margin-top:20px;
+  margin-top:0px;
 }
 
 #header .logo p {
@@ -57,8 +58,22 @@ div#footer-copyright ul{
   width:100%;
 }
 
+
 #header {
-  background: #6DB2B0 url(/images/gojo/header-fill.png) repeat-x scroll 0px 20px;
+  background: #439a96 url(/images/gojo/header-fill.png) repeat-x scroll 0px 00px;
+  height:192px;
+  margin-left:-60px;
+}
+
+#header .container {
+  background: #6DB2B0 url(/images/gojo/header-swoop.png) no-repeat scroll 0px 0px;
+  padding:0px;
+  height:100%;
+}
+
+#header .wrapper {
+  background: transparent url(/images/gojo/header-fill-right.png) no-repeat fixed 150% 26px;
+  height:100%;
 }
 
 #header div.howtouse {
@@ -66,21 +81,11 @@ div#footer-copyright ul{
   margin-top:10px;
   margin-bottom:-20px;
   width:200px;
-  padding:10px;
-  background-color:#3e3e3e;
-  border-radius:5px;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
   color:#e5e5e5;
 }
 
 #header div.howtouse a {
   color:#eee;
-  text-decoration:none;
-}
-
-#header div.howtouse a:hover {
-  text-decoration:underline;
 }
 
 #header div.howtouse .roundedcornr_top_807323, #header div.howtouse .roundedcornr_bottom_807323, #header div.howtouse .roundedcornr_top_807323 div {
@@ -95,11 +100,12 @@ div#footer-copyright ul{
   border-radius:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
-  background-color:#356e6c;
+  background-color:#4b9b97;
 }
 
 #networks-nav {
-  background-color: #439A96;
+  background-color: transparent;
+  margin-top:-22px;
 }
 
 input[type="submit"].donate {

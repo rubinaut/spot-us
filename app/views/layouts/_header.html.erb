@@ -1,45 +1,47 @@
-<div class="container">
-	
-	<div class="logo">
-		<p>
-    <a href="/" class="logo-link" title="<%=h SITE_NAME%> - Community Funded Reporting">
-				<span class="hide"><%=h SITE_NAME%> - Community Powered Reporting</span>
-				<%if @current_network && @current_network.name=="la"%>
-					<br /><img src="/images/new_design/usc.png" />
-				<%end%>
-			</a>
-		</p>
-	</div>
-	
-	<ul id="main-nav">
-		<li class="start_story">
-			<%= facebox_login_link_to image_tag("/images/new_design/start-a-story.jpg", :width=>"111", :height=>"98", :alt=>"start"), new_pitch_path %>
-		</li>
-		<li class="fund_story">
-			<%= link_to image_tag("/images/new_design/fund-a-story.jpg", :width=>"111", :height=>"98", :alt=>"fund"), "/stories/unfunded", :title=>"Find a Pitch to Fund" %>
-		</li>
-		<li class="read_story">
-    <%= link_to image_tag("/images/new_design/read-a-story.jpg", :width=>"111", :height=>"98", :alt=>"read"), "/stories/published", :title=>"Read A Published #{SITE_NAME} Story" %>
-		</li>
-		<%if @cca_header%>
-			<li class="start_story">
-				<%= link_to image_tag("/images/new_design/earn_credits.jpg", :width=>"111", :height=>"98", :alt=>"Earn credits"),  cca_path(@cca_header)%>
-			</li>
-		<%end%>
-	</ul>
-	
-	<div class="howtouse">
-		
-    <%=render :partial=>"layouts/howto", :locals=>{:link=>"<a href=\"/pages/about\" title=\"About #{SITE_NAME}\">About #{SITE_NAME}</a>"}%>
-		
-    <%=render :partial=>"layouts/howto", :locals=>{:link=>"<a href=\"http://spot.us1.list-manage.com/subscribe?u=eed5c3b3aed45d5f05eca391c&amp;id=b693cc07c0\" title=\"Newsletter\" rel=\"nofollow\">Newsletter</a> / <a href=\"#{BLOG_URL}\">Blog</a>"}%>
-		
-		<%=render :partial=>"layouts/howto", :locals=>{:link=>'<a href="/pages/examples" title="Projects and Partners">Projects and Partners</a>'}%>
-		
-		<%=render :partial=>"layouts/howto", :locals=>{:link=>facebox_login_link_to("Suggest a Story", "/tips/new")}%>
-
-    <%=render :partial=>"layouts/howto", :locals=>{:link=>"<a href=\"/contributors\" title=\"#{SITE_NAME} Community\">#{SITE_NAME} Community</a>"}%>
-		
- 	</div>
-
+<div class='wrapper'>
+  <div class="container">
+  	
+  	<div class="logo">
+  		<p>
+      <a href="/" class="logo-link" title="<%=h SITE_NAME%> - Community Funded Reporting">
+  				<span class="hide"><%=h SITE_NAME%> - Community Powered Reporting</span>
+  				<%if @current_network && @current_network.name=="la"%>
+  					<br /><img src="/images/new_design/usc.png" />
+  				<%end%>
+  			</a>
+  		</p>
+  	</div>
+  	
+  	<ul id="main-nav">
+  		<li class="start_story">
+  			<%= facebox_login_link_to image_tag("/images/new_design/start-a-story-header.png", :width=>"111", :height=>"98", :alt=>"start"), new_pitch_path %>
+  		</li>
+  		<li class="fund_story">
+  			<%= link_to image_tag("/images/new_design/fund-a-story.png", :width=>"111", :height=>"98", :alt=>"fund"), "/stories/unfunded", :title=>"Find a Pitch to Fund" %>
+  		</li>
+  		<li class="read_story">
+      <%= link_to image_tag("/images/new_design/read-a-story.png", :width=>"111", :height=>"98", :alt=>"read"), "/stories/published", :title=>"Read A Published #{SITE_NAME} Story" %>
+  		</li>
+  		<%if @cca_header%>
+  			<li class="start_story">
+  				<%= link_to image_tag("/images/new_design/earn_credits.jpg", :width=>"111", :height=>"98", :alt=>"Earn credits"),  cca_path(@cca_header)%>
+  			</li>
+  		<%end%>
+  	</ul>
+  	
+  	<div class="howtouse">
+  		
+      <%=render :partial=>"layouts/howto", :locals=>{:link=>"<a href=\"/pages/about\" title=\"About #{SITE_NAME}\">About #{SITE_NAME}</a>"}%>
+  		
+      <%=render :partial=>"layouts/howto", :locals=>{:link=>"<a href=\"http://spot.us1.list-manage.com/subscribe?u=eed5c3b3aed45d5f05eca391c&amp;id=b693cc07c0\" title=\"Newsletter\" rel=\"nofollow\">Newsletter</a> / <a href=\"#{BLOG_URL}\">Blog</a>"}%>
+  		
+  		<%=render :partial=>"layouts/howto", :locals=>{:link=>'<a href="/pages/examples" title="Projects and Partners">Projects and Partners</a>'}%>
+  		
+  		<%=render :partial=>"layouts/howto", :locals=>{:link=>facebox_login_link_to("Suggest a Story", "/tips/new")}%>
+  
+      <%=render :partial=>"layouts/howto", :locals=>{:link=>"<a href=\"/contributors\" title=\"#{SITE_NAME} Community\">#{SITE_NAME} Community</a>"}%>
+  		
+   	</div>
+  
+  </div>
 </div>
