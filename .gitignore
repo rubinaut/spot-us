@@ -4,6 +4,7 @@ config/settings.yml
 config/newrelic.yml
 config/ey-cloud.yml
 config/s3.yml
+config/deploy.rb
 db/*.sqlite3
 db/schema.rb
 public/system
