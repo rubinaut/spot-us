@@ -15,7 +15,7 @@ Some stories lend themselves to collaboration and others don't. If you want to b
 or want to find out more about the person that applied to join your reporting team
 contact <%= SITE_NAME%>.
 
-You can read more here: <%=root_url + "pages/about#joined_the_team"%>
+You can read more here: <%= page_url(:id=>"about", :anchor=>"joined_the_team")%>
 
 <%= SITE_NAME %>: <<%=APP_CONFIG[:email_notifications][:info][:email]%>> or <%=APP_CONFIG[:email_notifications][:editor][:name]%> <<%=APP_CONFIG[:email_notifications][:editor][:email]%>>
 
