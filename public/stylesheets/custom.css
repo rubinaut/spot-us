@@ -115,3 +115,10 @@ input[type="submit"].donate {
 a.donate_talent {
   background-color: #80bfbe;
 }
+
+
+.error_page #main-area {
+  text-align:center;
+  padding:30px;
+  height:400px;
+}
