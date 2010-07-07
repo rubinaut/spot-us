@@ -43,8 +43,10 @@ production:
       :consumer_secret: application_secret
   :paperclip:
       :storage: :s3
-      :s3_credentials: <%= "#{RAILS_ROOT}/config/s3.yml" %>
-      :bucket: <%= S3_BUCKET %>
+      :s3_credentials:
+        :access_key_id: access_key_id
+        :secret_access_key: secret_access_key
+      :bucket: buckent_name
       :path_prefix: ""
       :url_prefix: ""
   :email_notifications:
