@@ -33,6 +33,7 @@ Rails::Initializer.run do |config|
   config.gem "money", :version => ">=2.1.3"
   config.gem "oauth2"
   config.gem "json"
+  config.gem "twitter_oauth"
   config.gem "mysql"
   config.gem "memcached"
   config.gem "url_shortener"

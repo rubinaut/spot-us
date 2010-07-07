@@ -18,6 +18,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/auth/facebook', :controller => "sessions", :action => "facebook_login"
   map.connect '/auth/facebook/callback', :controller => "sessions", :action => "facebook_callback"
 
+  map.connect '/auth/twitter', :controller => "myspot/twitter_credentials", :action => "twitter_login"
+  map.connect '/auth/twitter/callback', :controller => "myspot/twitter_credentials", :action => "twitter_callback"
+
   map.connect '/notifications/social_notify', :controller => "notifications", :action => "social_notify"
   
   map.resources :news_items, :collection => {:search => :any, :sort_options => :get}
@@ -105,6 +108,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :feedbacks
   end
 
+  map.connect "/myspot/purchases/paypal_return", :controller => "myspot/purchases", :action => "paypal_return"
+  map.connect "/myspot/purchases/paypal_ipn", :controller => "myspot/purchases", :action => "paypal_ipn"
   
   map.namespace :myspot do |myspot|
     myspot.resource :profile do |profile|
@@ -119,7 +124,7 @@ ActionController::Routing::Routes.draw do |map|
     myspot.resources :pitches, :member => {:accept => :put}
     myspot.resources :posts
     myspot.resources :pledges
-    myspot.resources :purchases, :collection => {:paypal_return => :get, :paypal_ipn => :post}
+    myspot.resources :purchases
     myspot.resources :tips
     myspot.resources :comments
     myspot.resources :assignments

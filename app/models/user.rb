@@ -83,7 +83,11 @@ class User < ActiveRecord::Base
   end
   has_many :paid_donations, :conditions => {:donation_type => "payment", :status => "paid"}
   
-  has_many :all_donations, :class_name => "Donation"
+  has_many :all_donations, :class_name => "Donation" do
+    def pitch_sum(pitch)
+      self.paid.all(:conditions => {:pitch_id => pitch}).map(&:amount).sum
+    end
+  end
 
   has_many :spotus_donations
   has_many :tips
@@ -182,6 +186,10 @@ class User < ActiveRecord::Base
 		self.save!
 	end
 	
+	# def network_id
+	# 	APP_CONFIG[:has_networks] ? network_id : 0 #APP_CONFIG[:all_network]
+	# end
+	
 	def self.from_identity(credentials)
 		user = User.find_by_fb_user_id(credentials["id"].to_i)
 		return user if user
@@ -243,6 +251,10 @@ class User < ActiveRecord::Base
 
 ########### end facebook ##############
 
+  def twitter_connected?
+	twitter_credential && twitter_credential.access_token
+  end
+
   def citizen?
     self.is_a? Citizen
   end
@@ -273,7 +285,7 @@ class User < ActiveRecord::Base
   end
   
   def total_available_credits
-    self.credits - self.donations.find(:all, :conditions=>"credit_id is not null", :include=>:credit).map(&:credit) - self.spotus_donations.find(:all, :conditions=>"credit_id is not null", :include=>:credit).map(&:credit)
+    self.credits - self.all_donations.find(:all, :conditions=>"credit_id is not null", :include=>:credit).map(&:credit) - self.spotus_donations.find(:all, :conditions=>"credit_id is not null", :include=>:credit).map(&:credit)
   end
   
   def remaining_credits
@@ -281,7 +293,7 @@ class User < ActiveRecord::Base
   end
   
   def allocated_credits?(credit_these_pitches)
-      credit_these_pitches.map(&:amount).sum.to_f
+    credit_these_pitches.map(&:amount).sum.to_f
   end
   
   #depricated
@@ -335,7 +347,7 @@ class User < ActiveRecord::Base
   end
   
   def current_balance
-      unpaid_donations_sum - allocated_credits + current_spotus_donation.amount
+    unpaid_donations_sum + current_spotus_donation.amount #unpaid_donations_sum - allocated_credits + current_spotus_donation.amount
   end
   
   # Authenticates a user by their email and unencrypted password.  Returns the user or nil.

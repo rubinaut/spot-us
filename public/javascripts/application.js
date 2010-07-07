@@ -17,7 +17,11 @@ jQuery(document).ready(function($){
 	$('a[rel*=facebox]').facebox();
 	$('form[rel*=facebox]').facebox();
 	$('a[href*=/get_external_url]').facebox();
-
+	$(".primary_button").hover(function(){
+		$("#" + $(this).attr("id") + "_status").fadeIn(100);
+	}, function(){
+		$("#" + $(this).attr("id") + "_status").fadeOut(200);
+	});
 	$("#pitches_carousel").jCarouselLite({
 		btnNext: ".next_alt",
 		btnPrev: ".prev_alt",
@@ -195,8 +199,8 @@ function getTotalAmounts(){
 	jQuery('input[id*=credit_pitch_amounts]').each(function() {
 		owe_amount += parseFloat(this.value);
 	});
-	spot_us_support = jQuery('#spotus_donation').val() || 0;
-	credit = jQuery('#spotus_credit_amount').html() || 0;
+	spot_us_support = parseFloat(jQuery('#spotus_donation').val()) || 0;
+	credit = parseFloat(jQuery('#spotus_credit_amount').html().replace(',', '')) || 0;
 	total_amount = parseFloat(owe_amount)+parseFloat(spot_us_support)-parseFloat(credit);
 	if (total_amount<=0) {
 		jQuery('#purchase').hide();
