@@ -14,10 +14,10 @@ class Myspot::PurchasesController < ApplicationController
                              :first_name => current_user.first_name,
                              :last_name  => current_user.last_name)
     if cookies[:spotus_lite]
-		render :layout=>'lite'
-	else
-		render :partial => "/myspot/purchases/purchase_form", :layout => false
-	end
+		  render :layout=>'lite'
+	  else
+		  #render :partial => "/myspot/purchases/purchase_form", :layout => true
+	  end
   end
 
   def create
