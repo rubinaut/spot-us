@@ -24,6 +24,8 @@ production:
   :gateway:
       :login: login_to_payment_gateway
       :password: password_to_payment_gateway
+  :paypal:
+      :email: paypal_email
   :recaptcha:
       :public_key: public_key
       :private_key: private_key
