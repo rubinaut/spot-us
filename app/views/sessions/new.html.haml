@@ -1,4 +1,4 @@
-- @title = "Spot.us - Login"
+- @title = "#{h(SITE_NAME)} - Login"
 #login
   - if login_failed?
     - content_for :error do
@@ -11,7 +11,7 @@
           = link_to "Register now", new_user_path
       %p
         If you're experiencing a persistent problem, email
-        = mail_to 'david@spot.us', nil, :encode => "hex"
+        = mail_to h(INFO_EMAIL), nil, :encode => "hex"
         %br
         Seriously, this guy doesn't sleep and he wants the site to work for you!!!
   #spotus_form.clearfix

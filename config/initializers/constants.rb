@@ -7,7 +7,9 @@ LOCATIONS = [
   "South Bay"
 ].freeze
 
-MAIL_FROM_INFO = "\"#{APP_CONFIG[:email_notifications][:info][:name]}\" <#{APP_CONFIG[:email_notifications][:info][:email]}>"
+INFO_EMAIL = APP_CONFIG[:email_notifications][:info][:email]
+
+MAIL_FROM_INFO = "\"#{APP_CONFIG[:email_notifications][:info][:name]}\" <#{INFO_EMAIL}>"
 MAIL_WEBMASTER = "\"#{APP_CONFIG[:email_notifications][:webmaster][:name]}\" <#{APP_CONFIG[:email_notifications][:webmaster][:email]}>"
 MAIL_EDITOR = "\"#{APP_CONFIG[:email_notifications][:editor][:name]}\" <#{APP_CONFIG[:email_notifications][:editor][:email]}>"
 
