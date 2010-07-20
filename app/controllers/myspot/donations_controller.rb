@@ -12,7 +12,7 @@ class Myspot::DonationsController < ApplicationController
     if resource_saved?
       update_balance_cookie
       session[:donation_id] = @donation.id # temporary solution for being able to retrieve donation for share popup
-      if params[:spotus_lite]
+      if params[:spotus_lite].to_s == "true"
         format.html { redirect_to spotus_lite_myspot_donations_amounts_path }
       else
         format.html { redirect_to edit_myspot_donations_amounts_path }
