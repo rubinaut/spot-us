@@ -7,6 +7,8 @@ LOCATIONS = [
   "South Bay"
 ].freeze
 
+PAYPAL_CURRENCY = APP_CONFIG[:paypal][:currency]
+
 INFO_EMAIL = APP_CONFIG[:email_notifications][:info][:email]
 
 MAIL_FROM_INFO = "\"#{APP_CONFIG[:email_notifications][:info][:name]}\" <#{INFO_EMAIL}>"

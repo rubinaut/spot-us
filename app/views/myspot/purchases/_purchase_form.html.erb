@@ -18,7 +18,8 @@
 	      <% else %>
 	            <% form_tag PAYPAL_POST_URL do %>
 					<%paypal_return_myspot_purchases_url = myspot_purchase_url(:id=>"paypal_return")%>
-	               <%= hidden_field_tag "return", paypal_return_myspot_purchases_url %>
+                 <%= hidden_field_tag "return", paypal_return_myspot_purchases_url %>
+                 <%= hidden_field_tag "currency_code", h(PAYPAL_CURRENCY) %>
 	               <%= hidden_field_tag "cmd", "_cart" %>
 	               <%= hidden_field_tag "upload", "1" %>
 	               <%= hidden_field_tag "business", PAYPAL_EMAIL %>

@@ -26,6 +26,7 @@ production:
       :password: password_to_payment_gateway
   :paypal:
       :email: paypal_email
+      :currency: "USD"
   :recaptcha:
       :public_key: public_key
       :private_key: private_key
