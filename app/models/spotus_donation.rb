@@ -50,7 +50,8 @@ class SpotusDonation < ActiveRecord::Base
   end
 
   def self.find_from_paypal(paypal_params)
-    spotus_donation = if spotus_keys = paypal_params.detect{|k,v| v =~ /support spot\.us/i}
+    regexp = Regexp.escape("Support #{SITE_NAME}")
+    spotus_donation = if spotus_keys = paypal_params.detect{|k,v| v =~ /#{regexp}/i}
       spotus_donation_id = paypal_params.delete(spotus_keys.first.gsub(/name/, 'number'))
       SpotusDonation.find(spotus_donation_id)
     end

@@ -211,7 +211,8 @@ class Donation < ActiveRecord::Base
   end
 
   def self.strip_spotus_donations(paypal_params)
-    if spotus_keys = paypal_params.detect{|k,v| v =~ /support spot\.us/i}
+    regexp = Regexp.escape("Support #{SITE_NAME}")
+    if spotus_keys = paypal_params.detect{|k,v| v =~ /#{regexp}/i}
       paypal_params.delete(spotus_keys.first.gsub(/name/, 'number'))
       paypal_params.delete(spotus_keys.first)
     end
