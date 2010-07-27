@@ -5,7 +5,8 @@
 	<% javascript_tag do %>
 
 	jQuery(document).ready(function(){
-		jQuery("form#donation_amounts").submit(function(){
+/*
+    jQuery("form#donation_amounts").submit(function(){
 			if(jQuery("#purchase").css("display") == "inline") {
 				jQuery("#loading_status").fadeIn(50);
 				jQuery.post(jQuery(this).attr("action"), jQuery(this).serialize(), function(result){
@@ -15,7 +16,8 @@
 				}, "script");
 				return false;
 			}
-		});
+    });
+*/
 		jQuery('#remove_spotus_donation').click(function(){
 			jQuery('input#spotus_donation').val('');
 			jQuery('#support_spotus').hide();
