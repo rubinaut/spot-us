@@ -189,7 +189,9 @@ $(function() {
 	}
 });
 
-function getTotalAmounts(){
+function getTotalAmounts(recalc_spot_donation){
+	//alert($(this).attr("id"));
+	// return false;
 	owe_amount = 0;
 	credit = 0;
 	total_amount = 0;
@@ -199,9 +201,26 @@ function getTotalAmounts(){
 	jQuery('input[id*=credit_pitch_amounts]').each(function() {
 		owe_amount += parseFloat(this.value);
 	});
+
+	if(jQuery('#spotus_credit_amount').length > 0) {
+		credit = parseFloat(jQuery('#spotus_credit_amount').html().replace(',', '')) || 0;
+	}
+	else
+	{
+		credit = 0;
+	}
+	amount_to_pay = owe_amount - credit;
+	if(recalc_spot_donation && amount_to_pay > 0){
+		jQuery('#spotus_donation').attr("value",formatAsMoney(amount_to_pay/10));
+	}
+	else if (recalc_spot_donation)
+	{
+		jQuery('#spotus_donation').attr("value","0.00");
+	}
+
 	spot_us_support = parseFloat(jQuery('#spotus_donation').val()) || 0;
-	credit = parseFloat(jQuery('#spotus_credit_amount').html().replace(',', '')) || 0;
 	total_amount = parseFloat(owe_amount)+parseFloat(spot_us_support)-parseFloat(credit);
+
 	if (total_amount<=0) {
 		jQuery('#purchase').hide();
 		jQuery('#apply_credits').show();
@@ -210,7 +229,18 @@ function getTotalAmounts(){
 		jQuery('#purchase').show();
 		jQuery('#apply_credits').hide();
 	}
-	jQuery('#spotus_total_amount').html('$'+total_amount);
+
+	jQuery('#spotus_total_amount').html('$'+formatAsMoney(total_amount));
+
+}
+
+
+function formatAsMoney(mnt) {
+    mnt -= 0;
+    mnt = (Math.round(mnt*100))/100;
+    return (mnt == Math.floor(mnt)) ? mnt + '.00' 
+              : ( (mnt*10 == Math.floor(mnt*10)) ? 
+                       mnt + '0' : mnt);
 }
 
 function renderUserHeader() {

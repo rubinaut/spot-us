@@ -19,9 +19,9 @@
     });
 */
 		jQuery('#remove_spotus_donation').click(function(){
-			jQuery('input#spotus_donation').val('');
+			jQuery('input#spotus_donation').remove();
 			jQuery('#support_spotus').hide();
-			getTotalAmounts();
+			getTotalAmounts(true);
 			return false;
 		});
 
@@ -33,11 +33,14 @@
 			jQuery(this).blur().next("select").val('').addClass("invisible").next("em").addClass("invisible");
 		});
 		
-		getTotalAmounts();
-		
-		jQuery('input').change(function(){
-			getTotalAmounts();
-		});		
+		getTotalAmounts(true);
+
+    jQuery('input.line_item').change(function(){
+      getTotalAmounts(true);
+    });
+    jQuery('input#spotus_donation').change(function(){
+      getTotalAmounts(false);
+		});
 	});
 	<% end %>
 <% end %>
@@ -74,7 +77,7 @@
                   </p>
                </div>
                <div class="donater">
-                   $ <%= text_field_tag "donation_amounts[#{donation.id}][amount]", number_to_currency(donation.amount, :delimiter => '', :unit => ''), :size => 6, :id => "donation_amounts_#{donation.id}_amount", :style => "text-align:right;", :donation_id => donation.id %>
+                   $ <%= text_field_tag "donation_amounts[#{donation.id}][amount]", number_to_currency(donation.amount, :delimiter => '', :unit => ''), :size => 6, :id => "donation_amounts_#{donation.id}_amount", :style => "text-align:right;", :donation_id => donation.id, :class => "line_item" %>
                   <div class="action">
                      <%= link_to "Remove", myspot_donation_url(donation), :method => :delete, :confirm => "Are you sure you'd like to remove this donation of #{number_to_currency(donation.amount)}?" %>
                   </div> 
@@ -98,7 +101,7 @@
                         </p>
                     </div>
                     <div class="donater">
-                        $ <%= text_field_tag "credit_pitch_amounts[#{credit_pitch.id}][amount]", number_to_currency(credit_pitch.amount, :delimiter => '', :unit => ''), :size => 6, :id => "credit_pitch_amounts_#{credit_pitch.id}_amount", :style => "text-align:right;" %>
+                        $ <%= text_field_tag "credit_pitch_amounts[#{credit_pitch.id}][amount]", number_to_currency(credit_pitch.amount, :delimiter => '', :unit => ''), :size => 6, :id => "credit_pitch_amounts_#{credit_pitch.id}_amount", :style => "text-align:right;", :class => "line_item" %>
                         <div class="action">
                            <%= link_to "Remove", myspot_donation_path(credit_pitch), :method => :delete, :confirm => "Are you sure you'd like to remove this credit of #{number_to_currency(credit_pitch.amount)}?" %>
                         </div>
