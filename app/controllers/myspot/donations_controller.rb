@@ -9,6 +9,7 @@ class Myspot::DonationsController < ApplicationController
   end
   
   response_for :create do |format|
+    logger.info @donation.errors.full_messages.to_sentence
     if resource_saved?
       update_balance_cookie
       session[:donation_id] = @donation.id # temporary solution for being able to retrieve donation for share popup
@@ -18,8 +19,10 @@ class Myspot::DonationsController < ApplicationController
         format.html { redirect_to edit_myspot_donations_amounts_path }
       end
     else
+      logger.error "ERROR: Problem creating donation"
+      logger.error @donation.errors.full_messages.to_sentence
       format.html {
-        flash[:error] = 'There was a problem with your donation. Please try again'
+        flash[:error] = @donation.errors.full_messages.to_sentence
         redirect_to :back
       }
     end
