@@ -72,7 +72,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def self.valid_donations_for_user?(user, donations)
-    donations.all? {|d| d.user == user && d.unpaid? }
+    donations.all? {|d| d.nil? || (d.user == user && d.unpaid?) }
   end
 
   protected
