@@ -27,13 +27,15 @@
       </div>
    </div>
    <div class="main-column">
+     <% if @tip.user %>
       <div class="folded-headers-big">
          <div class="news_item_author">
             <%= link_to image_tag(@tip.user.photo(:thumb), :class => "avatar"), profile_path(@tip.user) %>
             <h5>Author</h5>
             <%= link_to @tip.user.full_name, profile_path(@tip.user), :class => "username" %>
          </div>
-      </div>
+       </div>
+     <% end %>
       <% unless @tip.video_embed.blank? %>
          <div class="media-box">
             <h3>Multimedia</h3>
