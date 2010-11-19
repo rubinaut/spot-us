@@ -24,6 +24,6 @@
         %td= tip.network_and_category
         %td= number_to_currency(tip.total_amount_pledged)
         %td
-          = tip.supporters.map(&:email).join(', ')
+          = tip.supporters.compact.map(&:email).join(', ')
         %td=link_to 'Destroy', admin_tip_path(tip), :confirm => 'Are you sure?', :method => :delete
 = will_paginate @tips
