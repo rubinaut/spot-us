@@ -240,7 +240,7 @@ class NewsItem < ActiveRecord::Base
   end
   
   def comment_subscribers
-    author = user.notify_comments ? [user] : []
+    author = (user && user.notify_comments) ? [user] : []
     comment_subscribers = comments.map(&:user).find_all{|user| user.notify_comments}.uniq
     (author + comment_subscribers).uniq
   end
